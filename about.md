@@ -1,5 +1,6 @@
 ---
 layout: default
+title: About
 ---
 
-<h1>Hello, World!</h1>
+# About
