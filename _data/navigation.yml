@@ -1,6 +1,16 @@
 # Site navigation links
 
-- title:
-  url:
-  excerpt:
+- title: Posts
+  url: /posts
+  excerpt: My coding blog
   image:
+
+- title: Portfolio
+  url: /portfolio
+  excerpt: Work examples
+  image:
+
+- title: About
+  url: /about
+  excerpt: A walkthrough of my experience
+  image: about.jpg

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-28T20:44:54-06:00</updated><id>http://localhost:4000/</id><title type="html">Melissa Johnson</title><subtitle>A quick introduction to the work of Melissa Johnson.</subtitle><entry><title type="html">My First Rails Project</title><link href="http://localhost:4000/blocmarks/" rel="alternate" type="text/html" title="My First Rails Project" /><published>2016-08-27T00:00:00-05:00</published><updated>2016-08-27T00:00:00-05:00</updated><id>http://localhost:4000/blocmarks</id><content type="html" xml:base="http://localhost:4000/blocmarks/">&lt;p&gt;Blocmarks is a Bloc Ruby on Rails project where the developer creates a site that allows users to manage and share bookmarks.&lt;/p&gt;
+
+&lt;h2 id=&quot;explanation&quot;&gt;Explanation&lt;/h2&gt;
+&lt;p&gt;Site functionality includes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Community aggregation of bookmarks (URLs)&lt;/li&gt;
+  &lt;li&gt;URLs organized by Topic&lt;/li&gt;
+  &lt;li&gt;View bookmarks by image and page title&lt;/li&gt;
+  &lt;li&gt;View only my favorites and submitted bookmarks&lt;/li&gt;
+  &lt;li&gt;User has the ability to like (or favorite) any bookmark&lt;/li&gt;
+  &lt;li&gt;User has the ability to edit and delete any topic or bookmark she creates&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+&lt;p&gt;As the first Bloc project, this was the first un-guided introduction to the Rails environment and how information is transferred between models, controllers, and views. The features required implementation of:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;user authentication&lt;/li&gt;
+  &lt;li&gt;CRUD operations on topics and bookmarks that were related&lt;/li&gt;
+  &lt;li&gt;ability to view images and site meta-data given a URL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Solving the need for CRUD functionality on topics and bookmarks was a straight-forward implementation of a one-to-many relationship between those two tables and the user table.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Logic&lt;/th&gt;
+      &lt;th&gt;Schema&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Topic  &lt;br /&gt; * has many bookmarks  &lt;br /&gt; * belongs to one user&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;t.index [&quot;user_id&quot;], name: &quot;index_topics_on_user_id&quot;, using: :btree&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bookmark  &lt;br /&gt; * has one topic  &lt;br /&gt; * belongs to one user&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;t.index [&quot;topic_id&quot;], name: &quot;index_bookmarks_on_topic_id&quot;, using: :btree&lt;/code&gt; &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;t.index [&quot;user_id&quot;], name: &quot;index_bookmarks_on_user_id&quot;, using: :btree&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;add_foreign_key &quot;bookmarks&quot;, &quot;topics&quot; &lt;/code&gt; &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;add_foreign_key &quot;likes&quot;, &quot;bookmarks&quot;&lt;/code&gt; &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;add_foreign_key &quot;likes&quot;, &quot;users&quot;&lt;/code&gt; &lt;br /&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;add_foreign_key &quot;topics&quot;, &quot;users&quot;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Implementation of user authentication and image and metadata display from a URL were accomplished through gems. The gems proved valuable for quickly implementing the functionality but they sometimes introduced complexity into the code that wasn’t immediately obvious.&lt;/p&gt;
+
+&lt;p&gt;Gems used include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Devise - user authentication&lt;/li&gt;
+  &lt;li&gt;Embedly - display images, title, description, etc from a URL&lt;/li&gt;
+  &lt;li&gt;Pundit - policy enforcement&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;devise&quot;&gt;Devise&lt;/h3&gt;
+&lt;p&gt;This gem was challenging because of how deeply embedded it is in the app and it’s not obvious where the integrations take place. For example, making the user confirmable required additional code in test scripts to provide confirmed at data. Missing this caused tests to fail although the underlying code was correct.&lt;/p&gt;
+
+&lt;p&gt;Devise also adds it’s own views. Fortunately, these views are customizable by downloading and editing their code.&lt;/p&gt;
+
+&lt;h3 id=&quot;pundit&quot;&gt;Pundit&lt;/h3&gt;
+&lt;p&gt;This gem allows the developer to specify access levels. So, for example, one could allow an admin to do anything whereas a typical member, could only manipulate her own submissions. This was easily enforced by adding &lt;code class=&quot;highlighter-rouge&quot;&gt;authorize &amp;lt;instance variable&amp;gt;&lt;/code&gt; to the desired method in the controller file.&lt;/p&gt;
+
+&lt;h3 id=&quot;embedly&quot;&gt;Embedly&lt;/h3&gt;
+
+&lt;p&gt;This was a very easy gem to implement requiring code in only two places (after adding the gem to Gemfile and &lt;code class=&quot;highlighter-rouge&quot;&gt;require embedly&lt;/code&gt; to config/application.rb).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;app/helper/application_helper.rb&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;module ApplicationHelper
+
+require 'embedly'
+
+  def display(url)
+    embedly_api =Embedly::API.new :key =&amp;gt; ENV['EMBEDLY_KEY']
+    obj = embedly_api.oembed :url =&amp;gt; url
+    image_tag((obj.first.thumbnail_url).to_s.html_safe, size: &quot;240x150&quot;, class: 'card-img-top')
+    #(obj.first.html).to_s.html_safe --&amp;gt; see all page info
+  end
+
+  def page_title(url)
+    embedly_api =Embedly::API.new :key =&amp;gt; ENV['EMBEDLY_KEY']
+    obj = embedly_api.oembed :url =&amp;gt; url
+    obj.first.title
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The code to call the methods from various views is as follows.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To display the first thumbnail of within the URL, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= display(bookmark.url) %&amp;gt;&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;To display the URL page title and open the URL in a new tab, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;%= link_to page_title(bookmark.url), bookmark.url, target: '_blank' %&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+&lt;p&gt;The results of the above solution implementation was a simple-to-use site.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Page Name&lt;/th&gt;
+      &lt;th&gt;Screenshot&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Sign In&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/MarkIT_index.png&quot; style=&quot;width: 600px; height: 400px&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Sign Up&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/MarkIT_sign_up.png&quot; style=&quot;width: 600px; height: 400px&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Post Sign-In&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/MarkIt_all_bookmarks.png&quot; style=&quot;width: 500px; height: 300px&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;My Bookmarks&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;/images/MarkIt_my_bookmarks.png&quot; style=&quot;width: 500px; height: 300px&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Overall, BlocMarks is a good introductory project in that it introduces you to core Rails concepts yet is simple enough for the earliest learner to achieve success. It also allows for multiple expansion opportunities. A few that I may implement if time permits include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;use of modals to add and edit topics and bookmarks&lt;/li&gt;
+  &lt;li&gt;pagination&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Blocmarks is a Bloc Ruby on Rails project where the developer creates a site that allows users to manage and share bookmarks.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22teaser%22=%3E%22/Markit_teaser.jpg%22%7D" /></entry></feed>

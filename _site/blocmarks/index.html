@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My First Rails Project • Melissa Johnson</title>
+    <meta name="description" content="Blocmarks is a Bloc Ruby on Rails project where the developer creates a site that allows users to manage and share bookmarks.
+
+">
+    <meta name="keywords" content="">
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="My First Rails Project">
+	<meta name="twitter:description" content="Blocmarks is a Bloc Ruby on Rails project where the developer creates a site that allows users to manage and share bookmarks.
+
+">
+	<meta name="twitter:site" content="@emjay_mn">
+	<meta name="twitter:creator" content="@emjay_mn">
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="http://localhost:4000/images/">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="My First Rails Project">
+	<meta property="og:description" content="Blocmarks is a Bloc Ruby on Rails project where the developer creates a site that allows users to manage and share bookmarks.
+
+">
+	<meta property="og:url" content="http://localhost:4000/blocmarks/">
+	<meta property="og:site_name" content="Melissa Johnson">
+
+    <link rel="canonical" href="http://localhost:4000/blocmarks/">
+
+    <link href="http://localhost:4000/atom.xml" type="application/atom+xml" rel="alternate" title="Melissa Johnson Atom Feed">
+    <link href="http://localhost:4000/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="http://localhost:4000/js/vendor/html5shiv.min.js"></script>
+      <script src="http://localhost:4000/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="http://localhost:4000/" class="site-title">Melissa Johnson</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">Melissa Johnson</a></li>
+	
+    
+    <li><a href="http://localhost:4000/posts" >Posts</a></li>
+  
+    
+    <li><a href="http://localhost:4000/portfolio" >Portfolio</a></li>
+  
+    
+    <li><a href="http://localhost:4000/about" >About</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>Melissa Johnson <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="http://localhost:4000/posts">
+        
+        <div class="title">Posts</div>
+        <p class="excerpt">My coding blog</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/portfolio">
+        
+        <div class="title">Portfolio</div>
+        <p class="excerpt">Work examples</p>
+      </a>
+    </li><li>
+      <a href="http://localhost:4000/about">
+        <img src="http://localhost:4000/images/about.jpg" alt="teaser" class="teaser">
+        <div class="title">About</div>
+        <p class="excerpt">A walkthrough of my experience</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+		<div class="page-title">
+			<h1>My First Rails Project</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<p>Blocmarks is a Bloc Ruby on Rails project where the developer creates a site that allows users to manage and share bookmarks.</p>
+
+<h2 id="explanation">Explanation</h2>
+<p>Site functionality includes:</p>
+
+<ul>
+  <li>Community aggregation of bookmarks (URLs)</li>
+  <li>URLs organized by Topic</li>
+  <li>View bookmarks by image and page title</li>
+  <li>View only my favorites and submitted bookmarks</li>
+  <li>User has the ability to like (or favorite) any bookmark</li>
+  <li>User has the ability to edit and delete any topic or bookmark she creates</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+<p>As the first Bloc project, this was the first un-guided introduction to the Rails environment and how information is transferred between models, controllers, and views. The features required implementation of:</p>
+
+<ul>
+  <li>user authentication</li>
+  <li>CRUD operations on topics and bookmarks that were related</li>
+  <li>ability to view images and site meta-data given a URL</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+<p>Solving the need for CRUD functionality on topics and bookmarks was a straight-forward implementation of a one-to-many relationship between those two tables and the user table.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Logic</th>
+      <th>Schema</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Topic  <br /> * has many bookmarks  <br /> * belongs to one user</td>
+      <td><code class="highlighter-rouge">t.index ["user_id"], name: "index_topics_on_user_id", using: :btree</code></td>
+    </tr>
+    <tr>
+      <td>Bookmark  <br /> * has one topic  <br /> * belongs to one user</td>
+      <td><code class="highlighter-rouge">t.index ["topic_id"], name: "index_bookmarks_on_topic_id", using: :btree</code> <br /> <code class="highlighter-rouge">t.index ["user_id"], name: "index_bookmarks_on_user_id", using: :btree</code></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">add_foreign_key "bookmarks", "topics" </code> <br /> <code class="highlighter-rouge">add_foreign_key "likes", "bookmarks"</code> <br /> <code class="highlighter-rouge">add_foreign_key "likes", "users"</code> <br /> <code class="highlighter-rouge">add_foreign_key "topics", "users"</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Implementation of user authentication and image and metadata display from a URL were accomplished through gems. The gems proved valuable for quickly implementing the functionality but they sometimes introduced complexity into the code that wasn’t immediately obvious.</p>
+
+<p>Gems used include:</p>
+
+<ul>
+  <li>Devise - user authentication</li>
+  <li>Embedly - display images, title, description, etc from a URL</li>
+  <li>Pundit - policy enforcement</li>
+</ul>
+
+<h3 id="devise">Devise</h3>
+<p>This gem was challenging because of how deeply embedded it is in the app and it’s not obvious where the integrations take place. For example, making the user confirmable required additional code in test scripts to provide confirmed at data. Missing this caused tests to fail although the underlying code was correct.</p>
+
+<p>Devise also adds it’s own views. Fortunately, these views are customizable by downloading and editing their code.</p>
+
+<h3 id="pundit">Pundit</h3>
+<p>This gem allows the developer to specify access levels. So, for example, one could allow an admin to do anything whereas a typical member, could only manipulate her own submissions. This was easily enforced by adding <code class="highlighter-rouge">authorize &lt;instance variable&gt;</code> to the desired method in the controller file.</p>
+
+<h3 id="embedly">Embedly</h3>
+
+<p>This was a very easy gem to implement requiring code in only two places (after adding the gem to Gemfile and <code class="highlighter-rouge">require embedly</code> to config/application.rb).</p>
+
+<p><strong>app/helper/application_helper.rb</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>module ApplicationHelper
+
+require 'embedly'
+
+  def display(url)
+    embedly_api =Embedly::API.new :key =&gt; ENV['EMBEDLY_KEY']
+    obj = embedly_api.oembed :url =&gt; url
+    image_tag((obj.first.thumbnail_url).to_s.html_safe, size: "240x150", class: 'card-img-top')
+    #(obj.first.html).to_s.html_safe --&gt; see all page info
+  end
+
+  def page_title(url)
+    embedly_api =Embedly::API.new :key =&gt; ENV['EMBEDLY_KEY']
+    obj = embedly_api.oembed :url =&gt; url
+    obj.first.title
+  end
+end
+</code></pre>
+</div>
+
+<p>The code to call the methods from various views is as follows.</p>
+
+<ul>
+  <li>To display the first thumbnail of within the URL, <code class="highlighter-rouge">&lt;%= display(bookmark.url) %&gt;</code><br /></li>
+  <li>To display the URL page title and open the URL in a new tab, <code class="highlighter-rouge">&lt;%= link_to page_title(bookmark.url), bookmark.url, target: '_blank' %&gt;</code></li>
+</ul>
+
+<h2 id="results">Results</h2>
+<p>The results of the above solution implementation was a simple-to-use site.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Page Name</th>
+      <th>Screenshot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sign In</td>
+      <td><img src="/images/MarkIT_index.png" style="width: 600px; height: 400px" /></td>
+    </tr>
+    <tr>
+      <td>Sign Up</td>
+      <td><img src="/images/MarkIT_sign_up.png" style="width: 600px; height: 400px" /></td>
+    </tr>
+    <tr>
+      <td>Post Sign-In</td>
+      <td><img src="/images/MarkIt_all_bookmarks.png" style="width: 500px; height: 300px" /></td>
+    </tr>
+    <tr>
+      <td>My Bookmarks</td>
+      <td><img src="/images/MarkIt_my_bookmarks.png" style="width: 500px; height: 300px" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Overall, BlocMarks is a good introductory project in that it introduces you to core Rails concepts yet is simple enough for the earliest learner to achieve success. It also allows for multiple expansion opportunities. A few that I may implement if time permits include:</p>
+
+<ul>
+  <li>use of modals to add and edit topics and bookmarks</li>
+  <li>pagination</li>
+</ul>
+
+				<hr />
+				<footer class="page-footer">
+					
+
+<div class="author-image">
+	<img src="http://localhost:4000/images/bio-photo.jpg" alt="Melissa Johnson">
+</div><!-- ./author-image -->
+<div class="author-content">
+	<h3 class="author-name" >Written by <span itemprop="author">Melissa Johnson</span></h3>
+	<p class="author-bio"></p>
+</div><!-- ./author-content -->
+					<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=My%20First%20Rails%20Project&amp;url=http://localhost:4000/blocmarks/&amp;via=emjay_mn" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blocmarks/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://localhost:4000/blocmarks/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+
+					<div class="page-meta">
+	<p>Updated <time datetime="2016-08-27T00:00:00Z" itemprop="datePublished">August 27, 2016</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+			<li><a href="http://localhost:4000" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2017 <a href="http://localhost:4000">Melissa Johnson</a> powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/" rel="nofollow">Skinny Bones</a>.</p>
+</footer>
+    </div>
+
+    <script src="http://localhost:4000/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="http://localhost:4000/js/main.js"></script>
+
+  </body>
+
+</html>

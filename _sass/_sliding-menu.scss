@@ -27,8 +27,8 @@
   top: $gutter;
   right: $gutter;
   display: block;
-  width: $button-size * 2;
-  height: $button-size * 2;
+  width: $button-size * 1.5;
+  height: $button-size * 1.5;
   background: $primary-color;
   outline: 0;
   padding: 0;
@@ -96,9 +96,9 @@
       display: block;
       @include font-size(32,no,1);
       @include media($small) {
-        @include font-size(48,no,1);
+        @include font-size(24,no,1);
       }
-      font-family: $base-font;
+      font-family: Arial, Helvetica, sans-serif;
       text-transform: uppercase;
       font-weight: 400;
     }
@@ -162,6 +162,7 @@
         margin-left: 170px;
         @include font-size(16,no);
       }
+      font-family: Arial, Helvetica, sans-serif;
     }
   }
   .sub-menu-item > li a {
