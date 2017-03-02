@@ -22,3 +22,6 @@ For those of you looking for a highly-motivated partner to deliver apps or those
 
 <i class="fa fa-user fa-3x"></i>
 &nbsp;&nbsp; **Learn more about me**. This page provides a glimpse into the experience I've gained  throughout my career.
+
+<br />
+Like what you see? <a href='/contact'>contact me</a>!
