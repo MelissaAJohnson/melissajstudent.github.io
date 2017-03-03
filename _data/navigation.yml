@@ -3,14 +3,14 @@
 - title: Posts
   url: /posts
   excerpt: My coding blog
-  image:
+  image: /posts.jpg
 
 - title: Portfolio
   url: /portfolio
   excerpt: Work examples
-  image:
+  image: /portfolio.jpg
 
 - title: About
   url: /about
   excerpt: A walkthrough of my experience
-  image: about.jpg
+  image: /About.jpg

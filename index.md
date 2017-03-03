@@ -11,17 +11,16 @@ image:
 {% endfor %}
 <!-- </div> /.tiles -->
 
-# Welcome #
-For those of you looking for a highly-motivated partner to deliver apps or those embarking on learning of the same, this site will be of interest to you. It includes samples of the work I've done throughout over 10 years of product managing web solutions and includes the journey taken as I embark on learning to code.
+**Welcome**. This site demonstrates the work of a Product Manager that has been responsible for delivering web and mobile solutions for over 10 years and documents my journey learning to code.
 
-<i class="fa fa-briefcase fa-3x"></i>
-&nbsp;&nbsp; **Checkout my portfolio**   for work samples and feel free to copy!
+<a href="/portfolio"><i class="fa fa-briefcase fa-3x"></i>
+&nbsp;&nbsp; **Checkout my portfolio**</a>  for product manager deliverables and coding work samples. Feel free to copy!
 
-<i class="fa fa-pencil fa-3x"></i>
-&nbsp;&nbsp; **Follow my code learning journey** as I blog about projects completed for courses from Harvard, Bloc, and others.
+<a href="/posts"><i class="fa fa-pencil fa-3x"></i>
+&nbsp;&nbsp; **Follow my code learning journey**</a> as I blog about projects completed for courses from Harvard, Bloc, and others.
 
-<i class="fa fa-user fa-3x"></i>
-&nbsp;&nbsp; **Learn more about me**. This page provides a glimpse into the experience I've gained  throughout my career.
+<a href="/about"><i class="fa fa-user fa-3x"></i>
+&nbsp;&nbsp; **Learn more about me**</a>. This page provides a glimpse into the experience I've gained  throughout my career.
 
 <br />
 Like what you see? <a href='/contact'>contact me</a>!
