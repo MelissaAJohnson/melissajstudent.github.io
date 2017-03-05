@@ -5,6 +5,8 @@
 .tile {
   @include outer-container;
   margin-bottom: $gutter;
+  border: solid 1px;
+  border-radius: 10px;
   @include media($micro) {
     @include fill-parent;
   }
@@ -13,13 +15,16 @@
     @include omega(4n);
   }
   .entry-date {
+    margin: 10px;
     @include font-size(16,no);
     color: lighten($text-color,25);
   }
   .post-title {
+    margin: 10px;
     @include font-size(18,no);
   }
   .post-excerpt {
+    margin: 10px;
     @include font-size(16);
   }
   .post-teaser {
