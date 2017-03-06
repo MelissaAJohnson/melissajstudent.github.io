@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-05T17:04:10-06:00</updated><id>http://localhost:4000/</id><title type="html">Melissa Johnson</title><subtitle>A quick introduction to the work of Melissa Johnson.</subtitle><entry><title type="html">My First Rails Project</title><link href="http://localhost:4000/blocmarks/" rel="alternate" type="text/html" title="My First Rails Project" /><published>2016-08-27T00:00:00-05:00</published><updated>2016-08-27T00:00:00-05:00</updated><id>http://localhost:4000/blocmarks</id><content type="html" xml:base="http://localhost:4000/blocmarks/">&lt;p&gt;Blocmarks is a Bloc Ruby on Rails project where the developer creates a site that allows users to manage and share bookmarks.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-05T19:08:47-06:00</updated><id>http://localhost:4000/</id><title type="html">Melissa Johnson</title><subtitle>A quick introduction to the work of Melissa Johnson.</subtitle><entry><title type="html">Building This Site</title><link href="http://localhost:4000/thisSite/" rel="alternate" type="text/html" title="Building This Site" /><published>2017-03-05T00:00:00-06:00</published><updated>2017-03-05T00:00:00-06:00</updated><id>http://localhost:4000/thisSite</id><content type="html" xml:base="http://localhost:4000/thisSite/">&lt;p&gt;Here are a few things I learned while building this portfolio site.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;p&gt;This site uses:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I used Sketch to visualize what I wanted&lt;/li&gt;
+  &lt;li&gt;Jekyll&lt;/li&gt;
+  &lt;li&gt;Skinny Bones template&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;site-planning&quot;&gt;Site Planning&lt;/h2&gt;
+&lt;p&gt;Before coding, I reviewed a bunch of portfolio sites to identify the elements I wanted to include. The easiest thing was to Google ‘Best portfolio site designs’ and quickly go through the results. The most useful was &lt;a href=&quot;https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=2&amp;amp;cad=rja&amp;amp;uact=8&amp;amp;ved=0ahUKEwiNvebHzsDSAhWl1IMKHbw8DSUQFgg8MAE&amp;amp;url=http%3A%2F%2Fwww.creativebloq.com%2Fportfolios%2Fexamples-712368&amp;amp;usg=AFQjCNEb76ApSnBCfVszVCDQKyyWKPBkng&amp;amp;sig2=GEbIgv7lXqNzuH2aRbLz3A&amp;amp;bvm=bv.148747831,d.amc&quot;&gt;45 brilliant design portfolios to inspire you&lt;/a&gt;. I then used Sketch to create my unique design.&lt;/p&gt;
+
+&lt;p&gt;I had &lt;a href=&quot;https://www.sketchapp.com/&quot;&gt;Sketch&lt;/a&gt; installed but didn’t know where to start. So, I ended up selecting ‘New from Template’ and used the Web Design template that contains art boards for desktop, tablet, and mobile. I am familiar with Bootstrap so I followed the Layout Setting directions found in &lt;a href=&quot;https://www.uxpin.com/studio/blog/10-best-practices-sketch/&quot;&gt;this article&lt;/a&gt;. There are tons of Sketch tutorials on YouTube. The challenge will be to find one that doesn’t assume you’re already a master at Photoshop. &lt;a href=&quot;https://www.youtube.com/watch?v=BoYNYIp_cfY&quot;&gt;This video&lt;/a&gt; went over the basics quickly enough and without losing me. I created the design below and was happy enough with it to get into making it happen.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/portfolio_site.png&quot; style=&quot;width: 400px; height: 400px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I know this first attempt at using Sketch fell short of all it’s capabilities but it allowed me to envision where I was going and the css export was a huge timesaver.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-jekyll&quot;&gt;Using Jekyll&lt;/h2&gt;
+&lt;p&gt;I’ve used a ton of web site CMS tools - WordPress, Drupal, Joomla, SquareSpace, etc and the thought of learning another one really didn’t have me all that excited. However, knowing I could write my blog posts in markdown was attractive so I thought I’d give it a shot.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/installation/&quot;&gt;Implementation&lt;/a&gt; was very easy and there are a ton of templates to choose from. I chose the &lt;a href=&quot;https://github.com/mmistakes/skinny-bones-jekyll&quot;&gt;Skinny Bones template&lt;/a&gt;. Understanding the structure took a little getting used to but I think I have the basics:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;html files in the layouts folder contain the base html for the different page layouts&lt;/li&gt;
+  &lt;li&gt;html files under the site folder are automatically generated from the content provided in .md files and their associated layout. These files should not be edited - I think - because they are over-written by the layout every time you save.&lt;/li&gt;
+  &lt;li&gt;look for a ‘_config.yml’ file to establish sitewide variables such as site title, URL, etc.&lt;/li&gt;
+  &lt;li&gt;the css for everything I needed to edit was in an ‘_layout.scss’ file in the ‘sass’ folder&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This should be enough to allow you to make basic changes. I did a lot of reverse-engineering to figure out where to find things.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-next&quot;&gt;What’s Next&lt;/h2&gt;
+&lt;p&gt;There are a lot of details this first iteration doesn’t address. Maybe they’ll be future blog posts.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;I wanted title text to appear on my featured image. I was able to accomplish this using absolute positioning and the css &lt;code class=&quot;highlighter-rouge&quot;&gt;top&lt;/code&gt; property. However, this doesn’t play well with responsive design.&lt;/li&gt;
+  &lt;li&gt;The template I grabbed has the listing of posts integrated. I need to figure out how to copy it to be used for displaying work examples. This shouldn’t be very difficult.&lt;/li&gt;
+  &lt;li&gt;Need to update my tiles class to match my design. Not worried about this knowing I can find the css in the _layout.scss file&lt;/li&gt;
+  &lt;li&gt;I’d like to figure out how to hide an element based on screen size (hide hamburger menu on desktop). My mentor directed me to use media queries but I’m not sure where to place it.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Here are a few things I learned while building this portfolio site.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/%7B%22teaser%22=%3E%22portfolio_site.png%22%7D" /></entry><entry><title type="html">My First Rails Project</title><link href="http://localhost:4000/blocmarks/" rel="alternate" type="text/html" title="My First Rails Project" /><published>2016-08-27T00:00:00-05:00</published><updated>2016-08-27T00:00:00-05:00</updated><id>http://localhost:4000/blocmarks</id><content type="html" xml:base="http://localhost:4000/blocmarks/">&lt;p&gt;Blocmarks is a Bloc Ruby on Rails project where the developer creates a site that allows users to manage and share bookmarks.&lt;/p&gt;
 
 &lt;h2 id=&quot;explanation&quot;&gt;Explanation&lt;/h2&gt;
 &lt;p&gt;Site functionality includes:&lt;/p&gt;

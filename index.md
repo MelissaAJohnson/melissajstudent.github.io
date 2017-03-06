@@ -7,11 +7,7 @@ feature-content: "I make awesome apps a reality"
 image:
   feature: feature.jpg
 ---
-<!-- <div class="tiles">
-{% for post in site.posts %}
-	{% include post-grid.html %}
-{% endfor %}
-<!-- </div> /.tiles -->
+
 **Welcome**. This site demonstrates the work of a Product Manager that has been responsible for delivering web and mobile solutions for over 10 years and documents my journey learning to code.
 
 <a href="/portfolio"><i class="fa fa-briefcase fa-3x"></i>
