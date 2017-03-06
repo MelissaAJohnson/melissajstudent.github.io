@@ -3,7 +3,7 @@ layout: default
 permalink: /
 title:
 feature-title: "Veteran Product Manager • Budding Developer"
-feature-content: "I make awesome apps a reality"
+feature-content: "I make visions of awesome apps a reality"
 image:
   feature: feature.jpg
 ---
